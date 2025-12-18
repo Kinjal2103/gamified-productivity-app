@@ -47,7 +47,7 @@ A full‑stack **gamified to‑do & productivity web application** designed to m
 
 * Git & GitHub
 * REST APIs
-* Postman (API testing)
+* Hoppscotch (API testing)
 
 ---
 
@@ -55,29 +55,28 @@ A full‑stack **gamified to‑do & productivity web application** designed to m
 
 root/
 ├── backend/
-│   ├── src/
-│   │   ├── middleware/      # Authentication & request middlewares
-│   │   ├── models/          # Mongoose schemas
-│   │   ├── routes/          # API routes
-│   │   └── utils/           # Helper / utility functions
-│   ├── package.json
-│   ├── package-lock.json
-│   └── .env                 # Environment variables (ignored)
+│ ├── src/
+│ │ ├── middleware/ # Authentication & request middlewares
+│ │ ├── models/ # Mongoose schemas
+│ │ ├── routes/ # API routes
+│ │ └── utils/ # Helper / utility functions
+│ ├── package.json
+│ ├── package-lock.json
+│ └── .env # Environment variables (ignored)
 │
 ├── frontend/ # React (Vite) frontend
-│   ├── public/ # Static assets
-│   ├── src/
-│   │   ├── assets/ `        # Images, icons, media
-│   │   ├── App.jsx          # Root React component
-│   │   ├── App.css          # App-level styles
-│   │   ├── index.css        # Global styles
-│   │   └── main.jsx         # Entry point
-│   ├── index.html
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── vite.config.js
-│ 
-│ 
+│ ├── public/ # Static assets
+│ ├── src/
+│ │ ├── assets/ # Images, icons, media
+│ │ ├── App.jsx # Root React component
+│ │ ├── App.css # App-level styles
+│ │ ├── index.css # Global styles
+│ │ └── main.jsx # Entry point
+│ ├── index.html
+│ ├── package.json
+│ ├── package-lock.json
+│ ├── vite.config.js
+│ └── .gitignore
 │
 ├── .gitignore
 └── README.md
