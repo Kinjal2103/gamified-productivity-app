@@ -53,36 +53,36 @@ A full‑stack **gamified to‑do & productivity web application** designed to m
 
 ## 📂 Project Structure
 
+```text
 root/
 ├── backend/
-│ ├── src/
-│ │ ├── middleware/ # Authentication & request middlewares
-│ │ ├── models/ # Mongoose schemas
-│ │ ├── routes/ # API routes
-│ │ └── utils/ # Helper / utility functions
-│ ├── package.json
-│ ├── package-lock.json
-│ └── .env # Environment variables (ignored)
+│   ├── src/
+│   │   ├── middleware/      # Authentication & request middlewares
+│   │   ├── models/          # Mongoose schemas
+│   │   ├── routes/          # API routes
+│   │   └── utils/           # Helper / utility functions
+│   ├── package.json
+│   ├── package-lock.json
+│   └── .env                 # Environment variables (ignored)
 │
-├── frontend/ # React (Vite) frontend
-│ ├── public/ # Static assets
-│ ├── src/
-│ │ ├── assets/ # Images, icons, media
-│ │ ├── App.jsx # Root React component
-│ │ ├── App.css # App-level styles
-│ │ ├── index.css # Global styles
-│ │ └── main.jsx # Entry point
-│ ├── index.html
-│ ├── package.json
-│ ├── package-lock.json
-│ ├── vite.config.js
-│ └── .gitignore
+├── frontend/                # React (Vite) frontend
+│   ├── public/              # Static assets
+│   ├── src/
+│   │   ├── assets/          # Images, icons, media
+│   │   ├── App.jsx          # Root React component
+│   │   ├── App.css          # App-level styles
+│   │   ├── index.css        # Global styles
+│   │   └── main.jsx         # Entry point
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── vite.config.js
+│   └── .gitignore
 │
 ├── .gitignore
 └── README.md
+```
 
-
----
 
 ## ⚙️ Installation & Setup
 
