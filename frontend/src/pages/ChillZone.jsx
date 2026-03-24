@@ -9,8 +9,10 @@ const ChillZone = () => {
   const [aiData, setAiData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Requirement for Chill Zone Access = Streak of 3
-  const hasAccess = user?.streak >= 3;
+  // Requirement for Chill Zone Access = 50 Daily XP
+  const dailyXP = (user?.lastXPDate && new Date(user.lastXPDate).toDateString() === new Date().toDateString()) ? (user?.dailyXP || 0) : 0;
+  const xpRequired = 50;
+  const hasAccess = dailyXP >= xpRequired;
 
   useEffect(() => {
     if (hasAccess) {
@@ -36,13 +38,13 @@ const ChillZone = () => {
         </div>
         <h1 className="text-3xl font-bold mb-4">Chill Zone Locked</h1>
         <p className="text-muted-foreground mb-8 text-lg">
-          Maintain a streak of 3 days to unlock the Chill Zone. 
-          Currently you are at: <span className="font-bold text-primary">{user?.streak || 0} days</span>.
+          Earn {xpRequired} XP today to unlock the Chill Zone.
+          Currently you have: <span className="font-bold text-primary">{dailyXP} XP</span> today.
         </p>
         <div className="w-full bg-secondary h-4 rounded-full overflow-hidden">
-          <motion.div 
+          <motion.div
             initial={{ width: 0 }}
-            animate={{ width: `${((user?.streak || 0) / 3) * 100}%` }}
+            animate={{ width: `${Math.min((dailyXP / xpRequired) * 100, 100)}%` }}
             className="bg-primary h-full rounded-full"
           />
         </div>
@@ -61,22 +63,22 @@ const ChillZone = () => {
 
       {/* AI Insights Widget */}
       <div className="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-primary/20 p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-center shadow-lg">
-         <div className="w-16 h-16 bg-primary/20 text-primary rounded-full flex shrink-0 items-center justify-center">
-            <BrainCircuit size={32} />
-         </div>
-         <div>
-           <h3 className="text-lg font-bold mb-1">AI Flow Analyzer</h3>
-           {loading ? (
-             <p className="text-sm text-muted-foreground animate-pulse">Analyzing neural patterns...</p>
-           ) : (
-             <p className="text-sm">
-                {aiData?.burnoutWarning ? 
-                  <span className="text-destructive font-semibold">Burnout Detected: {aiData.recommendation}</span> : 
-                  <span className="text-green-500 font-semibold">{aiData?.recommendation || "You're perfectly balanced."}</span>
-                }
-             </p>
-           )}
-         </div>
+        <div className="w-16 h-16 bg-primary/20 text-primary rounded-full flex shrink-0 items-center justify-center">
+          <BrainCircuit size={32} />
+        </div>
+        <div>
+          <h3 className="text-lg font-bold mb-1">AI Flow Analyzer</h3>
+          {loading ? (
+            <p className="text-sm text-muted-foreground animate-pulse">Analyzing neural patterns...</p>
+          ) : (
+            <p className="text-sm">
+              {aiData?.burnoutWarning ?
+                <span className="text-destructive font-semibold">Burnout Detected: {aiData.recommendation}</span> :
+                <span className="text-green-500 font-semibold">{aiData?.recommendation || "You're perfectly balanced."}</span>
+              }
+            </p>
+          )}
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6 mt-8">
@@ -100,8 +102,8 @@ const ChillZone = () => {
             <h3 className="font-bold text-lg text-foreground">Movie Recommendations</h3>
           </div>
           <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
-            {aiData?.burnoutWarning 
-              ? "You seem stressed. We recommend lighthearted comedies or nature documentaries." 
+            {aiData?.burnoutWarning
+              ? "You seem stressed. We recommend lighthearted comedies or nature documentaries."
               : "High energy! Maybe an action thriller or scifi adventure for tonight?"}
           </p>
           <button className="w-full py-3 rounded-lg bg-pink-500/10 text-pink-400 font-medium hover:bg-pink-500/20 transition-colors">

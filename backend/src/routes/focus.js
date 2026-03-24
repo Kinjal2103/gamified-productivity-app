@@ -26,7 +26,7 @@ router.post('/session', async (req, res) => {
     user.updateStreak();
     await user.save();
 
-    res.json({ session, user: { xp: user.xp, level: user.level, streak: user.streak } });
+    res.json({ session, user: { xp: user.xp, level: user.level, streak: user.streak, dailyXP: user.dailyXP, lastXPDate: user.lastXPDate } });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

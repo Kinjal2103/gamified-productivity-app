@@ -27,7 +27,9 @@ export const useFocusStore = create((set) => ({
       useAuthStore.getState().updateUserStats({
         xp: user.xp,
         level: user.level,
-        streak: user.streak
+        streak: user.streak,
+        dailyXP: user.dailyXP,
+        lastXPDate: user.lastXPDate
       });
     } catch (error) {
       console.error(error);

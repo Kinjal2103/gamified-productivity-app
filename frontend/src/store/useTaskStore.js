@@ -39,7 +39,9 @@ export const useTaskStore = create((set, get) => ({
       useAuthStore.getState().updateUserStats({
         xp: updatedUser.xp,
         level: updatedUser.level,
-        streak: updatedUser.streak
+        streak: updatedUser.streak,
+        dailyXP: updatedUser.dailyXP,
+        lastXPDate: updatedUser.lastXPDate
       });
     } catch (error) {
       console.error(error);
