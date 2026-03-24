@@ -1,85 +1,70 @@
-# 🎮 Gamified Productivity Web App
+# 🎮 FlowState: Gamified Productivity Web App
 
-A full‑stack **gamified to‑do & productivity web application** designed to make task management engaging and motivating. The app combines classic productivity tools with **XP, levels, streaks**, and planned mini‑games & AI features to help users stay consistent and focused.
+A full-stack **MERN gamified productivity application** designed to turn your daily to-dos into an engaging experience. FlowState combines task management with **XP, levels, streaks**, and an **AI-powered Chill Zone** to keep you motivated and productive.
 
 ---
 
 ## 🚀 Features
 
-### ✅ Core (Implemented)
+### ✅ Core Functionalities
+- **Smart Task Management**: Create, update, and prioritize tasks with deadlines.
+- **Next Task Suggestion**: An intelligent algorithm that suggests the most impactful task to work on next.
+- **Focus Mode**: A built-in Pomodoro-style timer to help you maintain deep work sessions.
+- **Mood Journaling**: Log your daily thoughts and feelings.
+- **AI Flow Analyzer**: Get personalized insights and burnout warnings based on your recent logs and task volume.
 
-* User authentication (JWT‑based login & signup)
-* Create, update, delete tasks
-* Task attributes:
-
-  * Deadline
-  * Priority level
-  * Estimated time
-* Smart **Next Task Suggestion** system
-* Gamification system:
-
-  * XP points for completing tasks
-  * Levels based on XP
-  * Daily streak tracking
-* Responsive and interactive dashboard UI
+### 🏆 Gamification System
+- **XP & Leveling**: Earn XP for every task completed and focus session finished. Level up every 100 XP.
+- **Daily Streak Tracking**: Maintain your consistency and watch your streak grow.
+- **Daily XP Goal**: Track your progress toward a daily XP goal to unlock rewards.
+- **Chill Zone**: An exclusive relaxation area unlocked by earning **50 XP today**. Includes:
+  - Curated **Lo-Fi & Binaural Beats** players.
+  - Personalized **Movie & Media Recommendations** based on your current burnout levels.
 
 ---
 
 ## 🧩 Tech Stack
 
 ### Frontend
-
-* React.js
-* HTML, CSS, JavaScript
-* Responsive UI design
+- **React 19** (Vite)
+- **Zustand** (State Management)
+- **Tailwind CSS** (Styling)
+- **Framer Motion** (Animations)
+- **Lucide React** (Iconography)
 
 ### Backend
+- **Node.js & Express.js**
+- **MongoDB & Mongoose** (Database)
+- **JWT Authentication** (Security)
 
-* Node.js
-* Express.js
-* JWT Authentication
+## Screenshots
 
-### Database
-
-* MongoDB (Mongoose ODM)
-
-### Tools & Utilities
-
-* Git & GitHub
-* REST APIs
-* Hoppscotch (API testing)
-
+<img src="assets/Main Dashboard.png" width="400"/>
+<img src="assets/Journal.png" width="400"/>
+<img src="assets/Adding task.png" width="400"/>
+<img src="assets/Chill Zone.png" width="400"/>
 ---
 
 ## 📂 Project Structure
 
 ```text
 root/
-├── backend/
+├── backend/                 # Node.js Express server
 │   ├── src/
-│   │   ├── middleware/      # Authentication & request middlewares
-│   │   ├── models/          # Mongoose schemas
-│   │   ├── routes/          # API routes
-│   │   └── utils/           # Helper / utility functions
-│   ├── package.json
-│   ├── package-lock.json
-│   └── .env                 # Environment variables (ignored)
+│   │   ├── middleware/      # Auth & request logic
+│   │   ├── models/          # MongoDB/Mongoose schemas
+│   │   ├── routes/          # API endpoints (Auth, Tasks, Focus, Journal, AI)
+│   │   └── utils/           # Scoring & helper logic
+│   └── package.json
 │
-├── frontend/                # React (Vite) frontend
-│   ├── public/              # Static assets
+├── frontend/                # React Vite application
 │   ├── src/
-│   │   ├── assets/          # Images, icons, media
-│   │   ├── App.jsx          # Root React component
-│   │   ├── App.css          # App-level styles
-│   │   ├── index.css        # Global styles
-│   │   └── main.jsx         # Entry point
-│   ├── index.html
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── vite.config.js
-│   └── .gitignore
+│   │   ├── components/      # Reusable UI components
+│   │   ├── pages/           # Dashboard, Tasks, Focus, Journal, ChillZone
+│   │   ├── store/           # Zustand global state (Auth, Tasks, Focus)
+│   │   └── assets/          # Styles and media
+│   └── package.json
 │
-├── .gitignore
 └── README.md
 ```
 
@@ -87,77 +72,43 @@ root/
 ## ⚙️ Installation & Setup
 
 ### 1️⃣ Clone the Repository
-
 ```bash
 git clone https://github.com/Kinjal2103/gamified-productivity-app.git
 cd gamified-productivity-app
 ```
 
 ### 2️⃣ Backend Setup
-
 ```bash
-cd server
+cd backend
 npm install
 ```
-
-Create a `.env` file:
-
-```
+Create a `.env` file in the `backend` directory:
+```env
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 ```
-
-Run backend server:
-
+Run the backend server:
 ```bash
 npm start
 ```
 
 ### 3️⃣ Frontend Setup
-
 ```bash
-cd client
+cd frontend
 npm install
-npm start
+npm run dev
 ```
-
-The app will run at:
-
-* Frontend → `http://localhost:5173`
-* Backend → `http://localhost:5000`
+The app will be available at `http://localhost:5173`.
 
 ---
 
-## 📈 Gamification Logic (Overview)
+## 📈 Gamification Logic
 
-* Completing tasks → Gain XP
-* XP thresholds → Level up
-* Completing tasks daily → Maintain streaks
-* Missing a day → Streak resets
-
----
-
-### 🛠 Planned / Upcoming
-
-* Focus mode (Pomodoro + distraction‑free UI)
-* Calendar sync (Google Calendar)
-* Streak rewards & badges
-* Mini games (2048, Flappy Bird, etc.) as rewards
-* AI‑based mood detection & song/movie recommendations
-* 
-## 🧠 Motivation Behind the Project
-
-Traditional to‑do apps feel boring and repetitive. This project aims to **blend productivity with gaming psychology**, making consistency rewarding and enjoyable.
-
----
-
-## 🔮 Future Scope
-
-* Mobile app version (React Native)
-* Social features (friends, leaderboards)
-* AI task recommendations
-* Personalized productivity insights
+- **Task Completion**: `Base XP = Priority * 10`. Bonuses awarded for early completion.
+- **Focus Sessions**: `1 XP per minute` of focused work.
+- **Daily XP Tracking**: Resets daily. Used to unlock the **Chill Zone** (Requires 50 XP).
+- **Streak Maintenance**: Complete at least one task or focus session daily to keep your streak alive.
 
 ---
 
