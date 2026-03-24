@@ -9,6 +9,7 @@ const TaskSchema = new Schema({
   title: String,
   description: String,
   deadline: Date,
+  category: { type: String, default: 'General' },
   priority: { type: Number, min: 1, max: 5 },
   estimatedTime: Number,
   difficulty: { type: String, enum: ['easy', 'medium', 'hard'] },

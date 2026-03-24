@@ -6,8 +6,13 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
 router.post('/register', async (req, res) => {
-  const user = await User.create(req.body);
-  res.json(user);
+  try {
+    const user = await User.create(req.body);
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    res.json({ token, user: { id: user._id, email: user.email, xp: user.xp, level: user.level, streak: user.streak, lastActive: user.lastActive } });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
 });
 
 // router.post('/login', async (req, res) => {
@@ -32,7 +37,7 @@ router.post('/login', async (req, res) => {
   }
 
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-  res.json({ token });
+  res.json({ token, user: { id: user._id, email: user.email, xp: user.xp, level: user.level, streak: user.streak, lastActive: user.lastActive } });
 });
 
 
